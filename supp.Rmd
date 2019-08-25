@@ -46,9 +46,9 @@ data <- data[-(data$workclass==" Without-pay"),]
 data2 <- data2[-(data$workclass==" Without-pay"),]
 ```
 ```{r}
-data <- data[,-8]
-data <- data2[,-8]
-write.csv(data, "data_set_tae_final_no_na_mod.csv", row.names = F)
-write.csv(data2, "test_no_na_mod.csv", row.names = F)
+data <- data[,-c(5,8)]
+data <- data2[,-c(5,8)]
+write.csv(data, "dataset_tae_final_no_na_mod.csv", row.names = F)
+write.csv(data2, "test_tae_no_na_mod.csv", row.names = F)
 ```
 
