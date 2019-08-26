@@ -1,6 +1,4 @@
 import tkinter as tk
-import pandas as pd
-from tkinter import messagebox 
 import RFP
 root = tk.Tk()
 # Code to add widgets will go here...
@@ -94,25 +92,10 @@ def predict():
     elif (mod == 2):
         print("Selected Support-Vector Machine")
 
-    x_num_vals = [{e['label'].cget("text"): e['entry_var'].get()} for e in numeric_questions_frames]
-    x_cat_vals = [{e['label'].cget("text"): e['entry_var'].get()} for e in catego_questions_frames]
+    x_num_vals = [{'label': e['label'].cget("text"), 'val':e['entry_var'].get()} for e in numeric_questions_frames]
+    x_cat_vals = [{'label': e['label'].cget("text"), 'val':e['entry_var'].get()} for e in catego_questions_frames]
 
-    x_predict = {}
-
-    for e in x_num_vals:
-        x_predict.update(e)
-
-    for e in x_cat_vals:
-        x_predict.update(e)
-
-    # if MODEL is None:
-    #     messagebox.showerror("Error", "No model is loaded")
-    #     return
-    # else:
-    x_predict = pd.DataFrame(x_predict, index=[0])
-    print(x_predict)
-
- 
+    print(x_cat_vals)
 
 
 # -----
@@ -128,7 +111,6 @@ def select_model():
         print("Selected Random Forest")
         msg = "Random Forest"
         MODEL = RFP.init_forest()
-        messagebox.showinfo("Info", msg+" model , successfully loaded")
     elif (mod == 2):
         print("Selected Support-Vector Machine")
         msg = "Support-Vector Machine"

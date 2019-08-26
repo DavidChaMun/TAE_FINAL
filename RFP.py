@@ -1,3 +1,4 @@
+import numpy
 import pandas as pd 
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier 
@@ -8,11 +9,12 @@ from sklearn.ensemble.forest import RandomForestRegressor
 import os
 import re
 
+
 class TAERandomForestClassifier(object):
     lab_encoders = {}
     dummy_encoder = None
     rfc_model = None
-    n_estimators = 1300
+    n_estimators = 100
     max_features = 5
     
     def encode_fit(self, cat_data):
@@ -73,3 +75,24 @@ class TAERandomForestClassifier(object):
 
         #Correr varias veces y ver como varia. Basado en el indice de jaccard
         print("Precisión:", metrics.accuracy_score(y_test, y_pred))
+
+def init_forest():
+    train_data_set = pd.read_csv("data/dataset_tae_final_no_na_mod.csv", encoding = "ISO-8859-1")
+    test_data_set = pd.read_csv("data/test_tae_no_na_mod.csv", encoding = "ISO-8859-1")
+    test_data_set["income"]=test_data_set["income"].replace(" <=50K.", " <=50K")
+    test_data_set["income"]=test_data_set["income"].replace(" >50K.", " >50K")
+
+    catego_columns = ['education',
+        'workclass',
+        'marital_status',
+        'ocupation',
+        'ethnicity',
+        'gender',
+        'native_country']
+
+    numeric_cols = ['age', 'fnlwgt', 'capital_gain', 'capital_loss', 'hours_per_week']
+
+    forest = TAERandomForestClassifier()
+    forest.fit(train_data_set.loc[:,train_data_set.columns!="income",],train_data_set["income"], catego_columns, numeric_cols)
+    forest.cal_conf_matrix(test_data_set.loc[:,test_data_set.columns!="income",], test_data_set["income"], catego_columns, numeric_cols)
+    return forest
