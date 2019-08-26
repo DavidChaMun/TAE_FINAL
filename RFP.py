@@ -96,3 +96,5 @@ def init_forest():
     forest.fit(train_data_set.loc[:,train_data_set.columns!="income",],train_data_set["income"], catego_columns, numeric_cols)
     forest.cal_conf_matrix(test_data_set.loc[:,test_data_set.columns!="income",], test_data_set["income"], catego_columns, numeric_cols)
     return forest
+
+#RF_MODEL = init_forest()

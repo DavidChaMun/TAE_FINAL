@@ -81,18 +81,33 @@ for m in numeric_cols:
     numeric_questions_frames[-1]['entry'].grid(row=0, column=1)
 
 # -----
+def select_model():
+
+    mod = selected_model.get()
+    msg = ""
+
+    if (mod == 0):
+        print("Selected Neuronal Networks")
+        msg = "Neuronal Networks"
+    elif (mod == 1):
+        print("Selected Random Forest")
+        msg = "Random Forest"
+        global MODEL 
+        MODEL = RFP.init_forest()
+        messagebox.showinfo("Info", msg+" model , successfully loaded")
+    elif (mod == 2):
+        print("Selected Support-Vector Machine")
+        msg = "Support-Vector Machine"
+
+    select_model_msg.set("Predicting with " + msg  + ": ")
+
+
+# -----
 def predict():
     print("Trying to predict")
     preddicted_value.set(str(int(preddicted_value.get())+1))
 
     mod = selected_model.get()
-
-    if (mod == 0):
-        print("Selected Neuronal Networks")
-    elif (mod == 1):
-        print("Selected Random Forest")
-    elif (mod == 2):
-        print("Selected Support-Vector Machine")
 
     x_num_vals = [{e['label'].cget("text"): e['entry_var'].get()} for e in numeric_questions_frames]
     x_cat_vals = [{e['label'].cget("text"): e['entry_var'].get()} for e in catego_questions_frames]
@@ -105,36 +120,24 @@ def predict():
     for e in x_cat_vals:
         x_predict.update(e)
 
-    # if MODEL is None:
-    #     messagebox.showerror("Error", "No model is loaded")
-    #     return
-    # else:
-    x_predict = pd.DataFrame(x_predict, index=[0])
-    print(x_predict)
-
+    if MODEL is None:
+        messagebox.showerror("Error", "No model is loaded")
+        return
+    else:
+        x_predict = pd.DataFrame(x_predict, index=[0])
+        print(x_predict)
+        
+        if (mod == 0):
+            print("Selected Neuronal Networks")
+        elif (mod == 1):
+            print("Using Random Forest")
+            r = MODEL.predict(x_predict, catego_columns, numeric_cols)
+            messagebox.showinfo("Result", "Result is: " + r)
+          
+        elif (mod == 2):
+            print("Selected Support-Vector Machine")
+    
  
-
-
-# -----
-def select_model():
-
-    mod = selected_model.get()
-    msg = ""
-
-    if (mod == 0):
-        print("Selected Neuronal Networks")
-        msg = "Neuronal Networks"
-    elif (mod == 1):
-        print("Selected Random Forest")
-        msg = "Random Forest"
-        MODEL = RFP.init_forest()
-        messagebox.showinfo("Info", msg+" model , successfully loaded")
-    elif (mod == 2):
-        print("Selected Support-Vector Machine")
-        msg = "Support-Vector Machine"
-
-    select_model_msg.set("Predicting with " + msg  + ": ")
-
 model_select_frame = tk.Frame(model_frame)
 model_select_frame.grid(row=0, column=0)
 
