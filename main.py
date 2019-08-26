@@ -17,14 +17,6 @@ numeric_questions_frames = []
 catego_columns = ['education', 'workclass', 'marital_status', 'ocupation', 'ethnicity', 'gender', 'native_country']
 numeric_cols = ['age', 'fnlwgt', 'capital_gain', 'capital_loss', 'hours_per_week']
 
-def predict():
-    print("Trying to predict")
-    preddicted_value.set(str(int(preddicted_value.get())+1))
-
-def select_model():
-    print("Waka waka ma eh eh" + str(selected_model.get()))
-    select_model_msg.set("You selected the option " + str(selected_model.get()))
-
 survey_frame = tk.Frame(root)
 model_frame = tk.Frame(root)
 help_frame = tk.Frame(root)
@@ -83,6 +75,44 @@ for m in numeric_cols:
     numeric_questions_frames[-1]['entry'] = tk.Entry(master=numeric_questions_frames[-1]['frame'], 
         textvariable=numeric_questions_frames[-1]['entry_var'], width=20)
     numeric_questions_frames[-1]['entry'].grid(row=0, column=1)
+
+# -----
+def predict():
+    print("Trying to predict")
+    preddicted_value.set(str(int(preddicted_value.get())+1))
+
+    mod = selected_model.get()
+
+    if (mod == 0):
+        print("Selected Neuronal Networks")
+    elif (mod == 1):
+        print("Selected Random Forest")
+    elif (mod == 2):
+        print("Selected Support-Vector Machine")
+
+    x_num_vals = [{'label': e['label'].cget("text"), 'val':e['entry_var'].get()} for e in numeric_questions_frames]
+    x_cat_vals = [{'label': e['label'].cget("text"), 'val':e['entry_var'].get()} for e in catego_questions_frames]
+
+    print(x_cat_vals)
+
+
+# -----
+def select_model():
+
+    mod = selected_model.get()
+    msg = ""
+
+    if (mod == 0):
+        print("Selected Neuronal Networks")
+        msg = "Neuronal Networks"
+    elif (mod == 1):
+        print("Selected Random Forest")
+        msg = "Random Forest"
+    elif (mod == 2):
+        print("Selected Support-Vector Machine")
+        msg = "Support-Vector Machine"
+
+    select_model_msg.set("Predicting with " + msg  + ": ")
 
 model_select_frame = tk.Frame(model_frame)
 model_select_frame.grid(row=0, column=0)
