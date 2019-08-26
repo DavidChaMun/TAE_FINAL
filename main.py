@@ -52,11 +52,11 @@ for m in catego_columns:
     catego_questions_frames[-1]['frame'].grid(row=survey_row_index,column=survey_col_index)
     survey_row_index += 1
 
-    catego_questions_frames[-1]['label'] = tk.Label(master=catego_questions_frames[-1]['frame'], text=m)
+    catego_questions_frames[-1]['label'] = tk.Label(master=catego_questions_frames[-1]['frame'], text=m, width=13,  anchor='w')
     catego_questions_frames[-1]['label'].grid(row=0, column=0)
 
     catego_questions_frames[-1]['entry'] = tk.Entry(master=catego_questions_frames[-1]['frame'], 
-        textvariable=catego_questions_frames[-1]['entry_var'])
+        textvariable=catego_questions_frames[-1]['entry_var'], width=30)
     catego_questions_frames[-1]['entry'].grid(row=0, column=1)
 
 
@@ -77,24 +77,27 @@ for m in numeric_cols:
     numeric_questions_frames[-1]['frame'].grid(row=survey_row_index,column=survey_col_index)
     survey_row_index += 1
 
-    numeric_questions_frames[-1]['label'] = tk.Label(master=numeric_questions_frames[-1]['frame'], text=m)
+    numeric_questions_frames[-1]['label'] = tk.Label(master=numeric_questions_frames[-1]['frame'], text=m, width=12, anchor='w', padx=15)
     numeric_questions_frames[-1]['label'].grid(row=0, column=0)
 
     numeric_questions_frames[-1]['entry'] = tk.Entry(master=numeric_questions_frames[-1]['frame'], 
-        textvariable=numeric_questions_frames[-1]['entry_var'])
+        textvariable=numeric_questions_frames[-1]['entry_var'], width=20)
     numeric_questions_frames[-1]['entry'].grid(row=0, column=1)
 
 model_select_frame = tk.Frame(model_frame)
 model_select_frame.grid(row=0, column=0)
 
-neural_model_s = tk.Radiobutton(master=model_select_frame, text="Neuronal Network", var=selected_model, value=0, command=select_model, justify=tk.LEFT)
-neural_model_s.grid(row=0, column=0, sticky = tk.N+tk.S+tk.E+tk.W  )
+neural_model_s = tk.Radiobutton(master=model_select_frame, text="Neuronal Network", var=selected_model, value=0, anchor='w',
+    command=select_model, justify=tk.LEFT, width=30)
+neural_model_s.grid(row=0, column=0 )
 
-forest_model = tk.Radiobutton(master=model_select_frame, text="Random Forest", var=selected_model, value=1, command=select_model, justify=tk.LEFT)
-forest_model.grid(row=1, column=0, sticky = tk.N+tk.S+tk.E+tk.W  )
+forest_model = tk.Radiobutton(master=model_select_frame, text="Random Forest", var=selected_model, value=1, anchor='w',
+    command=select_model, justify=tk.LEFT, width=30)
+forest_model.grid(row=1, column=0 )
 
-vector_model = tk.Radiobutton(master=model_select_frame, text="Support-Vector Machine", var=selected_model, value=2, command=select_model, justify=tk.LEFT)
-vector_model.grid(row=2, column=0,  sticky = tk.N+tk.S+tk.E+tk.W  )
+vector_model = tk.Radiobutton(master=model_select_frame, text="Support-Vector Machine", var=selected_model, value=2, anchor='w',
+    command=select_model, justify=tk.LEFT, width=30)
+vector_model.grid(row=2, column=0 )
 
 predict_buttom = tk.Button(master=model_frame, text="Predict", command=predict)
 predict_buttom.grid(row=0, column=1  )
