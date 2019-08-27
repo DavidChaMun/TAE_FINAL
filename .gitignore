@@ -1,3 +1,6 @@
-Dockerfile
 __pycache__
 test.py
+.vscode
+tae
+test.txt
+pyvenv.cfg
