@@ -3,6 +3,7 @@ import pandas as pd
 from tkinter import messagebox 
 import RFP
 import SVM
+import nn_class
 root = tk.Tk()
 # Code to add widgets will go here...
 
@@ -90,6 +91,7 @@ def select_model():
     if (mod == 0):
         print("Selected Neuronal Networks")
         msg = "Neuronal Networks"
+        MODEL = nn_class.neural_network_mod()
         messagebox.showinfo("Info", msg+" model , successfully loaded")
     elif (mod == 1):
         print("Selected Random Forest")
@@ -131,16 +133,18 @@ def predict():
         print(x_predict)
         
         if (mod == 0):
-            print("Selected Neuronal Networks")
+            r = MODEL.predict(x_predict)
+            print("Using Neuronal Networks")
+            messagebox.showinfo("Result", "Result is: " + str(r))
         elif (mod == 1):
             print("Using Random Forest")
             r = MODEL.predict(x_predict, catego_columns, numeric_cols)
             messagebox.showinfo("Result", "Result is: " + r)
-          
+
         elif (mod == 2):
             print("Selected Support-Vector Machine")
             r = MODEL.predict(x_predict)
-            
+            print()
             if (r == 0):
                 messagebox.showinfo("Result", "Result is: <=50K")
                 print("Result is: "+str(r))

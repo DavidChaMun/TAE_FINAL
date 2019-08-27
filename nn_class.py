@@ -1,3 +1,12 @@
+import joblib
+from keras.models import load_model
+from sklearn.preprocessing import MinMaxScaler
+
+import numpy as np
+import pandas as pd
+import keras
+from keras.models import Sequential
+
 class neural_network_mod():
 
     scaler =None
@@ -30,17 +39,9 @@ class neural_network_mod():
                   'native_country', 'ocupation']
     
     def __init__(self):
-        from sklearn.externals import joblib
-        from keras.models import load_model
-        from sklearn.preprocessing import MinMaxScaler
-        
-        import numpy as np
-        import pandas as pd
-        import keras
-        from keras.models import Sequential
         
         self.scaler = joblib.load('scaler.save')
-        self.nn_model = load_model('my_model.h5')
+        self.nn_model = load_model('best_neural_network_ever.h5')
         
     def predict(self, data):
       data = self.tidy_data(data)
