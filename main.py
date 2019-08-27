@@ -2,6 +2,7 @@ import tkinter as tk
 import pandas as pd
 from tkinter import messagebox 
 import RFP
+import SVM
 root = tk.Tk()
 # Code to add widgets will go here...
 
@@ -82,22 +83,24 @@ for m in numeric_cols:
 
 # -----
 def select_model():
-
+    global MODEL
     mod = selected_model.get()
     msg = ""
 
     if (mod == 0):
         print("Selected Neuronal Networks")
         msg = "Neuronal Networks"
+        messagebox.showinfo("Info", msg+" model , successfully loaded")
     elif (mod == 1):
         print("Selected Random Forest")
         msg = "Random Forest"
-        global MODEL 
         MODEL = RFP.init_forest()
         messagebox.showinfo("Info", msg+" model , successfully loaded")
     elif (mod == 2):
         print("Selected Support-Vector Machine")
         msg = "Support-Vector Machine"
+        MODEL = SVM.TAESupportVectorMachineClassifier()
+        messagebox.showinfo("Info", msg+" model , successfully loaded")
 
     select_model_msg.set("Predicting with " + msg  + ": ")
 
@@ -136,8 +139,14 @@ def predict():
           
         elif (mod == 2):
             print("Selected Support-Vector Machine")
-    
- 
+            r = MODEL.predict(x_predict)
+            
+            if (r == 0):
+                messagebox.showinfo("Result", "Result is: <=50K")
+            elif (r == 1):
+                messagebox.showinfo("Result", "Result is: >50K")
+
+
 model_select_frame = tk.Frame(model_frame)
 model_select_frame.grid(row=0, column=0)
 
