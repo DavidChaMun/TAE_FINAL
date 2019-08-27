@@ -53,7 +53,7 @@ class neural_network_mod():
     def tidy_data(self,data):
       
       #Transformamos variables object a categoricas
-      for col in catego_columns:        
+      for col in self.catego_columns:        
         data[col] = pd.Categorical(data[col])
       
       #Creamos variables dummies con las categoricas
