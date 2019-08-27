@@ -143,8 +143,10 @@ def predict():
             
             if (r == 0):
                 messagebox.showinfo("Result", "Result is: <=50K")
+                print("Result is: "+str(r))
             elif (r == 1):
                 messagebox.showinfo("Result", "Result is: >50K")
+                print("Result is: "+str(r))
 
 
 model_select_frame = tk.Frame(model_frame)
