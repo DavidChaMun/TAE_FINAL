@@ -30,6 +30,16 @@ Real vs  Pedicha | <=50k | >50k
 Logrando una precision del: 86%
 
 ### Suport-Vector Machine
+Para la implementación de este modelo, se hace uso del módulo svm de sklearn para el motor de predicción y validación.
+
+#### Meta Parametros
+Se tienen en cuenta 3 meta parametros:  
+- Kernel: Linear.
+- Gamma: Por defecto (Auto).
+- C: Por defecto (1).
+#### Resultados
+Precision: Aproximádamente 78%
+
 ### GUI
 Para la gui se hace uso del modulo tkinter
 
