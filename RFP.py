@@ -15,7 +15,8 @@ class TAERandomForestClassifier(object):
     dummy_encoder = None
     rfc_model = None
     n_estimators = 100
-    max_features = 5
+    max_features = 7
+    max_depth = 16
     
     def encode_fit(self, cat_data):
         #Encodes string to numeric labels
@@ -54,7 +55,7 @@ class TAERandomForestClassifier(object):
         
         f_x_train = pd.concat([x_train_num, x_train_cat], axis=1)
 
-        self.rfc_model = RandomForestClassifier(n_estimators=self.n_estimators, criterion="entropy", max_features=self.max_features)
+        self.rfc_model = RandomForestClassifier(n_estimators=self.n_estimators, criterion="entropy", max_features=self.max_features, max_depth=self.max_depth)
         self.rfc_model = self.rfc_model.fit(f_x_train, y_train)
         
     def predict(self, x_predict, cat_cols, num_cols):
