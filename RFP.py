@@ -15,8 +15,8 @@ class TAERandomForestClassifier(object):
     dummy_encoder = None
     rfc_model = None
     n_estimators = 100
-    max_features = 5
-    max_depth = 10
+    max_features = 7
+    max_depth = 16
     
     def encode_fit(self, cat_data):
         #Encodes string to numeric labels
