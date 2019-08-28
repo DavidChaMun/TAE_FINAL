@@ -4,19 +4,32 @@
 ## Autores
 David Chaverra Munera  
 Juan Felipe Munera Vergara  
-Andres Aguilar  
+Andres Felipe Aguilar Rendon    
+Christian Camilo Guzmán Escobar
 
 
 ## Decisiones de diseño
 
 ### Neuronal Network
 ### Random Forest
-Para la implementacion de este metdo, se hace uso de
+Para la implementacion de este metdo, se hace uso del modulo DecisionTreeClassifier de sklearn para el motor de prediccion, ademas se hace uso del modulo LabelEncoder y OneHotEncoder para la generacion de las variables dummies apartir de las variables categoricas.
+
 #### Meta Parametros
 Se tienen en cuenta 3 meta parametros:  
--feature
+- Numero de estimadores: 100.
+- Numero de categorias: 7.
+- Maximo de profundidad: 16.
 #### Resultados
+
+| Real vs Pedicha | <=50k | >50k |
+| -: | -: | -: | -: |
+| <=50k | 10788 | 571 |
+| >50k | 1561 | 2139 |
+
+
 ### Suport-Vector Machine
+### GUI
+Para la gui se hace uso del modulo tkinter
 
 ## Despliegue
 ### Docker
