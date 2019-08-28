@@ -14,6 +14,7 @@ class TAESupportVectorMachineClassifier(object):
 
     @classmethod
     def predict(cls, x_predict):
+        
         cls.dataset.pop("income") if "income" in cls.dataset else None
         cls.dataset.append(x_predict)
 
@@ -22,6 +23,6 @@ class TAESupportVectorMachineClassifier(object):
 
         dummy_dataset = pd.get_dummies(cls.dataset)
         dummy_dataset["Unnamed"] = [_ for _ in range(len(dummy_dataset))]
-
+        
         y_pred = cls.model.predict(dummy_dataset[-1:])
         return y_pred

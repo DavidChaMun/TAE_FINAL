@@ -4,6 +4,7 @@ from tkinter import messagebox
 import RFP
 import SVM
 import nn_class
+from pandas.api.types import is_numeric_dtype
 root = tk.Tk()
 # Code to add widgets will go here...
 
@@ -130,6 +131,13 @@ def predict():
         return
     else:
         x_predict = pd.DataFrame(x_predict, index=[0])
+        print(x_predict)
+        #solving space problem
+        for i in x_predict.columns:
+            if not(is_numeric_dtype(x_predict[i])):
+                if not(str(x_predict.iloc[0][i]) == 'Married' or str(x_predict.iloc[0][i]) == 'other'):
+                    x_predict[i] = ' ' + x_predict[i].astype(str)
+        print("CHECKING")
         print(x_predict)
         
         if (mod == 0):
