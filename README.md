@@ -21,8 +21,8 @@ Se tienen en cuenta 3 meta parametros:
 - Maximo de profundidad: 16.
 #### Resultados
 
-| Real vs Pedicha | <=50k | >50k |
-| -: | -: | -: | -: |
+| Real vs  Pedicha | <=50k | >50k |
+| ------- | :-----: | :------: | -----: |
 | <=50k | 10788 | 571 |
 | >50k | 1561 | 2139 |
 
