@@ -22,10 +22,10 @@ Se tienen en cuenta 3 meta parametros:
 #### Resultados
 
 
-| Real vs  Pedicha | <=50k | >50k |
-| :------- | :-----: | :------: | -----: |
-| <=50k | 10788 | 571 |
-| >50k | 1561 | 2139 |
+Real vs  Pedicha | <=50k | >50k 
+---- | ---- | ---- 
+<=50k | 10788 | 571
+| >50k | 1561 | 2139 
 
 
 ### Suport-Vector Machine
