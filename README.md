@@ -2,17 +2,34 @@
 
 
 ## Autores
-David Chaverra Munera  
-Juan Felipe Munera Vergara  
-Andres Felipe Aguilar Rendon    
+David Chaverra Múnera  
+Juan Felipe Múnera Vergara  
+Andrés Felipe Aguilar Rendón    
 Christian Camilo Guzmán Escobar
 
 
 ## Decisiones de diseño
+Se encuentran en "Análisis descriptivo TAE.docx".
 
 ### Neuronal Network
+Para la implementación de las redes neuronales, se hace uso del módulo sequence de Keras para el motor de predicción. El mejor modelo se evaluó optimizando la precisión utilizando una base de datos de validación. 
+
+#### Meta Parametros
+Los meteparámetros considerados fueron:
+- Número de capas y neuronas dentro de *sequential*.
+
+- Método de activación de la neurona de salida.
+
+- Optimizador.
+
+- Número de epochs.
+
+#### Resultados
+Precision: Aproximádamente ~85%.
+
+
 ### Random Forest
-Para la implementacion de este metdo, se hace uso del modulo DecisionTreeClassifier de sklearn para el motor de prediccion, ademas se hace uso del modulo LabelEncoder y OneHotEncoder para la generacion de las variables dummies apartir de las variables categoricas.
+Para la implementacion de este método, se hace uso del modulo DecisionTreeClassifier de sklearn para el motor de prediccion, ademas se hace uso del modulo LabelEncoder y OneHotEncoder para la generacion de las variables dummies apartir de las variables categoricas.
 
 #### Meta Parametros
 Se tienen en cuenta 3 meta parametros:  
@@ -30,7 +47,7 @@ Real vs  Pedicha | <=50k | >50k
 Logrando una precision del: 86%
 
 ### Suport-Vector Machine
-Para la implementación de este modelo, se hace uso del módulo svm de sklearn para el motor de predicción y validación.
+Para la implementación de este modelo, se hace uso del módulo svm de sklearn para el motor de predicción.
 
 #### Meta Parametros
 Se tienen en cuenta 3 meta parametros:  
@@ -41,7 +58,7 @@ Se tienen en cuenta 3 meta parametros:
 Precision: Aproximádamente 78%
 
 ### GUI
-Para la gui se hace uso del modulo tkinter
+Para la gui se hace uso del modulo tkinter, para correr la GUI se ejecuta main.py.
 
 ## Despliegue
 ### Docker
@@ -59,7 +76,7 @@ docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY tae_final
 ```
 
 ### Otros
-En caso de no contar con un host de linus y docker, se puede correr localmente con el comando:  
+En caso de no contar con un host de linux y docker, se puede correr localmente con el comando:  
 python3 main.py, solo si primero se instalan las dependencias necesarias con:  
 ```sh
 pip install --no-cache-dir -r requirements.txt
