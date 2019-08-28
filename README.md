@@ -29,11 +29,9 @@ Precision: Aproximádamente ~85%.
 
 
 ### Random Forest
-<<<<<<< HEAD
-Para la implementacion de este metdo, se hace uso del modulo DecisionTreeClassifier de sklearn para el motor de prediccion, ademas se hace uso del modulo LabelEncoder y OneHotEncoder para la generacion de las variables dummies apartir de las variables categoricas. 
-=======
+
 Para la implementacion de este método, se hace uso del modulo DecisionTreeClassifier de sklearn para el motor de prediccion, ademas se hace uso del modulo LabelEncoder y OneHotEncoder para la generacion de las variables dummies apartir de las variables categoricas.
->>>>>>> 2fe54c44fee841500318df736298425cb341570b
+
 
 #### Meta Parametros
 Se tienen en cuenta 3 meta parametros:  
