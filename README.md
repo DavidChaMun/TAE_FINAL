@@ -9,7 +9,7 @@ Christian Camilo Guzmán Escobar
 
 
 ## Decisiones de diseño
-Se encuentran en "Análisis descriptivo TAE.docx".
+
 
 ### Neuronal Network
 Para la implementación de las redes neuronales, se hace uso del módulo sequence de Keras para el motor de predicción. El mejor modelo se evaluó optimizando la precisión utilizando una base de datos de validación. 
