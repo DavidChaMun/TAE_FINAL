@@ -27,6 +27,7 @@ Real vs  Pedicha | <=50k | >50k
 <=50k | 10788 | 571
 | >50k | 1561 | 2139 
 
+Logrando una precision del: 86%
 
 ### Suport-Vector Machine
 ### GUI
