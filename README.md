@@ -12,7 +12,7 @@ Christian Camilo Guzmán Escobar
 
 ### Neuronal Network
 ### Random Forest
-Para la implementacion de este metdo, se hace uso del modulo DecisionTreeClassifier de sklearn para el motor de prediccion, ademas se hace uso del modulo LabelEncoder y OneHotEncoder para la generacion de las variables dummies apartir de las variables categoricas.
+Para la implementacion de este metdo, se hace uso del modulo DecisionTreeClassifier de sklearn para el motor de prediccion, ademas se hace uso del modulo LabelEncoder y OneHotEncoder para la generacion de las variables dummies apartir de las variables categoricas. 
 
 #### Meta Parametros
 Se tienen en cuenta 3 meta parametros:  
